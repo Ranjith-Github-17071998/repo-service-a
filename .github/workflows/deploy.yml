@@ -18,25 +18,25 @@ jobs:
     - name: Download Service A
       uses: actions/checkout@v4
       with:
-        repository: repo-service-a
+        repository: Ranjith-Github-17071998/repo-service-a
         path: services/ServiceA
 
     - name: Download Service B
       uses: actions/checkout@v4
       with:
-        repository: repo-service-b
+        repository: Ranjith-Github-17071998/repo-service-b
         path: services/ServiceB
 
     - name: Download Service C
       uses: actions/checkout@v4
       with:
-        repository: repo-service-c
+        repository: Ranjith-Github-17071998/repo-service-c
         path: services/ServiceC
 
     - name: Download Service D
       uses: actions/checkout@v4
       with:
-        repository: repo-service-d
+        repository: Ranjith-Github-17071998/repo-service-d
         path: services/ServiceD
 
     # ---- Create final deployment package ----
