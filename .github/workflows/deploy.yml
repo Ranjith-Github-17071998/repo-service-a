@@ -1,0 +1,55 @@
+name: Deploy All Functions
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout current repo
+      uses: actions/checkout@v4
+
+    # ---- Download artifacts from other repos ----
+    - name: Download Service A
+      uses: actions/checkout@v4
+      with:
+        repository: org/repo-service-a
+        path: services/ServiceA
+
+    - name: Download Service B
+      uses: actions/checkout@v4
+      with:
+        repository: org/repo-service-b
+        path: services/ServiceB
+
+    - name: Download Service C
+      uses: actions/checkout@v4
+      with:
+        repository: org/repo-service-c
+        path: services/ServiceC
+
+    - name: Download Service D
+      uses: actions/checkout@v4
+      with:
+        repository: org/repo-service-d
+        path: services/ServiceD
+
+    # ---- Create final deployment package ----
+    - name: Prepare deployment folder
+      run: |
+        mkdir deploy
+        cp -r services/* deploy/
+        cp host.json deploy/
+        cp package.json deploy/
+
+    - name: Deploy to Azure Functions
+      uses: Azure/functions-action@v1
+      with:
+        app-name: my-shared-function-app
+        package: deploy
+        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
