@@ -1,8 +1,6 @@
 {
   "name": "repo-service-a",
   "version": "1.0.0",
-  "description": "Service A Azure Function",
-  "main": "index.js",
   "engines": {
     "node": "18.x"
   }
