@@ -50,6 +50,6 @@ jobs:
     - name: Deploy to Azure Functions
       uses: Azure/functions-action@v1
       with:
-        app-name: share-multi-service-funcapp
+        app-name: shared-multi-service-funcapp
         package: deploy
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
